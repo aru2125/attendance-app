@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Class Attendance — Weekdays Only</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Favicon links -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+  <!-- Header -->
+  <header class="topbar">
+  <img src="apple-touch-icon.png" alt="Logo" class="logo" />
+  <h1>Attendance Manager</h1>
+  <p class="subtitle">Record daily attendance (weekdays only). Export to Excel (CSV) or Word.</p>
+  </header>
+
+  <main class="container">
+    <!-- Controls -->
+    <section class="controls card">
+      <div class="row">
+        <label for="date">Select date (weekdays only):</label>
+        <input id="date" type="date" />
+        <button id="loadBtn">Load Day</button>
+      </div>
+
+      <div class="row">
+        <button id="addStudentBtn">➕ Add Student</button>
+        <button id="bulkPresentBtn">Mark All Present</button>
+        <button id="bulkAbsentBtn">Mark All Absent</button>
+        <button id="exportCsvBtn">Export CSV (Excel)</button>
+  <button id="exportWordBtn">Export Word</button>
+  <!-- Removed Export/Import JSON buttons and file input as requested -->
+      </div>
+    </section>
+
+    <!-- Student table -->
+    <section class="card">
+      <table id="studentsTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Roll / ID</th>
+            <th>Present</th>
+            <th>Notes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="studentsTbody">
+          <!-- Rows injected by JS -->
+        </tbody>
+      </table>
+      <p class="muted">Tip: Use "Export CSV" to open in Excel. Use "Export JSON" to backup or move between devices.</p>
+    </section>
+
+    <!-- Simple summary -->
+    <section class="card summary" id="summaryCard">
+      <strong>Summary</strong>
+      <div id="summaryText">No data loaded.</div>
+    </section>
+  </main>
+
+  <!-- Add Student Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content card">
+      <h3>Add / Edit Student</h3>
+      <label>Name <input id="modalName" /></label>
+      <label>Roll / ID <input id="modalRoll" /></label>
+      <div class="row">
+        <button id="saveStudentBtn">Save</button>
+        <button id="cancelStudentBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <small>Created for classroom attendance · Weekdays only (Saturday & Sunday disabled)</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
